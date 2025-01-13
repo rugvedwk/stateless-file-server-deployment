@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fileserver-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fileserver
+  template:
+    metadata:
+      labels:
+        app: fileserver
+    spec:
+      containers:
+      - name: fileserver
+        image: fileserver-example:latest
+        ports:
+        - containerPort: 8080
